@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080b09">
+<title>TiVo — Your autonomous AI trading agent</title>
+<meta name="description" content="TiVo trades out loud on papertrade. Explore the concept, demo interface, roadmap, and community links.">
+<style>
+:root{--bg:#070a08;--panel:#0c120e;--panel2:#101812;--line:#243329;--text:#f1f7f2;--muted:#98a79c;--mint:#a9ffd5;--green:#5fe4a5;--lime:#d5ff72;--red:#ff8d8d}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow-x:hidden}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+nav{height:74px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff0d}.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.05em;font-size:21px}.mark{width:34px;height:34px;border-radius:11px;background:var(--mint);display:grid;place-items:center;color:#07110b;font-weight:900;box-shadow:0 0 24px #a9ffd51c}.navlinks{display:flex;gap:25px;color:#a8b5ab;font-size:12px}.navlinks a:hover{color:var(--mint)}.navright{display:flex;align-items:center;gap:10px}.status{font-size:10px;color:var(--mint);border:1px solid #315743;border-radius:99px;padding:7px 10px;display:flex;align-items:center;gap:7px}.dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}.btn{border:1px solid #34463a;border-radius:9px;padding:11px 15px;font-size:12px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.2s}.btn:hover{transform:translateY(-2px);border-color:var(--mint)}.btn.primary{background:var(--mint);color:#07110b;border-color:var(--mint)}.btn.ghost{background:#ffffff04;color:var(--text)}.btn.small{padding:8px 10px;font-size:11px}
+.hero{position:relative;padding:78px 0 58px;display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center;min-height:510px}.eyebrow{display:inline-flex;gap:9px;align-items:center;border:1px solid #25382b;background:#0d1510;border-radius:99px;padding:8px 12px;color:#c1d2c6;font-size:10px;text-transform:uppercase;letter-spacing:.1em}.eyebrow span{color:var(--mint)}h1{font-size:clamp(46px,6.5vw,78px);letter-spacing:-.075em;line-height:.98;margin:24px 0 19px;font-weight:760}h1 em{font-style:normal;color:var(--mint);text-shadow:0 0 40px #a9ffd51b}.lead{font-size:15px;line-height:1.8;color:#aab8ad;max-width:500px;margin:0 0 25px}.actions{display:flex;gap:10px;flex-wrap:wrap}.fine{font-size:10px;color:#77867b;margin-top:16px}.hero-art{height:350px;position:relative;display:grid;place-items:center;isolation:isolate}.orbital{position:absolute;width:275px;height:275px;border:1px solid #a9ffd527;border-radius:50%;animation:spin 24s linear infinite}.orbital:before{content:"";position:absolute;top:25px;left:35px;width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 18px var(--mint)}.orbital.two{width:345px;height:195px;animation:spin2 26s linear infinite}.orbital.three{width:205px;height:330px;animation:spin 32s linear infinite reverse;border-color:#d5ff7217}.core{width:158px;height:158px;border-radius:42px;display:grid;place-items:center;background:radial-gradient(circle at 30% 20%,#315943,#102017 58%,#09110c);border:1px solid #8bffc750;box-shadow:0 0 75px #57f4a21a,inset 0 0 35px #a9ffd510;animation:float 4s ease-in-out infinite;position:relative}.core:before{content:"";position:absolute;inset:-8px;border:1px solid #9fffc52c;border-radius:48px;animation:pulse 3s ease-in-out infinite}.core svg{width:78px;height:78px;filter:drop-shadow(0 0 13px #a9ffd552)}.float-card{position:absolute;background:#0e1511ed;border:1px solid #2a3a30;padding:12px 14px;border-radius:11px;box-shadow:0 18px 40px #0005;animation:float 5s ease-in-out infinite}.float-card small{display:block;color:#87968b;font-size:9px;margin-bottom:6px}.float-card strong{font-size:11px}.green{color:var(--mint)}.card-a{top:28px;right:0}.card-b{bottom:35px;left:0;animation-delay:-2s}.card-c{bottom:3px;right:10px;animation-delay:-1s}
+.tickerline{border-top:1px solid #1d2921;border-bottom:1px solid #1d2921;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:18px 0;color:#8c9a90;font-size:10px}.tickerline b{color:#dce8df;font-weight:650}.section{padding:78px 0}.section-head{max-width:660px;margin-bottom:30px}.kicker{font-size:10px;color:var(--mint);letter-spacing:.15em;text-transform:uppercase}.section h2{font-size:clamp(31px,4vw,46px);letter-spacing:-.055em;line-height:1.08;margin:12px 0}.sub{color:var(--muted);line-height:1.75;font-size:13px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.feature{background:linear-gradient(145deg,#101712,#0a0f0c);border:1px solid #202e24;border-radius:15px;padding:22px;transition:.25s}.feature:hover{transform:translateY(-3px);border-color:#456b53}.feature-icon{height:38px;width:38px;border:1px solid #33503d;background:#122219;border-radius:11px;display:grid;place-items:center;color:var(--mint);font-size:17px;margin-bottom:20px}.feature h3{font-size:16px;margin:0 0 9px}.feature p{font-size:12px;line-height:1.7;color:#98a69b;margin:0}
+.demo-shell{border:1px solid #29382d;background:#0b100d;border-radius:17px;overflow:hidden;box-shadow:0 24px 65px #0004}.demo-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 17px;border-bottom:1px solid #202c23;flex-wrap:wrap}.demo-title{font-weight:750;font-size:13px}.demo-label{font-size:9px;letter-spacing:.08em;color:var(--lime);border:1px solid #4a512a;border-radius:99px;padding:6px 8px}.demo-content{padding:18px}.market-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.market{border:1px solid #26352a;background:#0e1510;border-radius:11px;padding:14px;text-align:left;color:var(--text);transition:.2s}.market:hover,.market.active{border-color:var(--mint);background:#122019}.market .symbol{font-size:12px;font-weight:750}.market .price{font-size:19px;font-weight:750;letter-spacing:-.04em;margin:10px 0 5px}.market .change{font-size:10px;color:var(--green)}.market .change.down{color:var(--red)}.market small{display:block;color:#839187;font-size:9px;margin-top:9px}.demo-lower{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}.panel{border:1px solid #26352a;background:#0e1410;border-radius:11px;padding:16px;min-width:0}.panel-title{font-size:11px;font-weight:750;display:flex;align-items:center;justify-content:space-between;margin-bottom:13px}.panel-title span{font-size:9px;color:#849287;font-weight:500}.signal{display:flex;gap:10px;align-items:flex-start;border-top:1px solid #202c23;padding:12px 0}.signal:first-of-type{border-top:0}.signal-icon{height:26px;min-width:26px;border-radius:8px;background:#193123;color:var(--mint);display:grid;place-items:center;font-size:12px}.signal b{display:block;font-size:11px;margin-bottom:4px}.signal p{margin:0;font-size:10px;color:#8d9b91;line-height:1.55}.log{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;color:#9ca99f;line-height:1.9}.log div{border-bottom:1px solid #1d2921;padding:6px 0}.log .mint{color:var(--mint)}.log .yellow{color:var(--lime)}.demo-note{color:#718076;font-size:10px;line-height:1.6;margin:12px 2px 0}.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:15px}.tab{background:#101711;color:#9ca99f;border:1px solid #26342a;border-radius:7px;padding:7px 10px;font-size:10px}.tab.active{background:#193123;color:var(--mint);border-color:#426b51}
+.paper-terminal{margin-top:12px}.trade-intro{font-size:11px;color:#91a095;line-height:1.6;margin:0 0 14px}.paper-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:12px 0}.paper-stats>div{border:1px solid #26352a;background:#0a100c;border-radius:9px;padding:12px}.paper-stats small{display:block;color:#8c9a90;font-size:10px;margin-bottom:7px}.paper-stats strong{font-size:clamp(14px,2vw,20px);letter-spacing:-.03em}.trade-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:12px 0}.trade-controls label{font-size:11px;color:#aebbb1}.trade-controls input{width:120px;background:#080d09;border:1px solid #334438;border-radius:7px;color:#f1f7f2;padding:9px;font:inherit}.trade-message{font-size:11px;line-height:1.5;color:var(--mint);min-height:17px}.trade-message.error{color:var(--red)}.paper-columns{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}.paper-table{font-size:10px;color:#b7c4ba;overflow-wrap:anywhere}.paper-row{display:grid;grid-template-columns:1fr auto;gap:8px;padding:9px 0;border-bottom:1px solid #1d2921}.paper-row strong{display:block;font-size:11px;color:#f1f7f2;margin-bottom:3px}.paper-row small,.empty-state{color:#829087;font-size:10px}.paper-value{text-align:right}.paper-value .positive{color:var(--green)}.paper-value .negative{color:var(--red)}.empty-state{line-height:1.6}@media(max-width:600px){.paper-stats{grid-template-columns:1fr}.paper-columns{grid-template-columns:1fr}.trade-controls input{width:100%}.trade-controls label{width:100%}}
+.process{display:grid;grid-template-columns:.8fr 1.2fr;gap:55px;align-items:start}.steps{border-top:1px solid var(--line)}.step{display:grid;grid-template-columns:38px 1fr;gap:14px;padding:19px 0;border-bottom:1px solid var(--line)}.num{color:var(--mint);font-size:11px;padding-top:3px}.step h3{font-size:14px;margin:0 0 7px}.step p{margin:0;color:var(--muted);font-size:12px;line-height:1.7}.step button{margin-top:10px;background:transparent;border:0;padding:0;color:var(--mint);font-size:10px}.step-detail{display:none;margin-top:9px;border-left:2px solid #4d8663;padding:8px 11px;background:#0d1710;color:#a5b6a9;font-size:11px;line-height:1.65}.step-detail.open{display:block}
+.roadmap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.roadmap-card{background:#0d130f;border:1px solid #243329;border-radius:12px;padding:17px;min-height:150px}.roadmap-card .phase{font-size:9px;letter-spacing:.1em;color:#819087;text-transform:uppercase}.roadmap-card h3{font-size:14px;margin:12px 0 8px}.roadmap-card p{font-size:11px;color:#93a197;line-height:1.65;margin:0}.roadmap-card .state{display:inline-block;margin-top:13px;border-radius:99px;border:1px solid #34483a;padding:5px 7px;font-size:9px;color:var(--lime)}.roadmap-card .state.current{color:var(--mint);border-color:#3d7652}
+.tokenbox{border:1px solid #2a3a30;background:radial-gradient(ellipse at 90% 0%,#1a3022 0%,#0d120f 55%);border-radius:18px;padding:30px;display:grid;grid-template-columns:1fr auto;gap:25px;align-items:center}.tokenbox h2{margin:10px 0;font-size:32px;letter-spacing:-.05em}.tokenbox p{color:var(--muted);font-size:12px;line-height:1.7;max-width:580px}.token-pill{display:inline-flex;border:1px solid #375742;background:#13241a;color:var(--mint);padding:7px 10px;border-radius:99px;font-size:10px}.token-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.token-meta span{font-size:10px;color:#a4b2a8;border:1px solid #27342b;border-radius:7px;padding:7px 9px}.socials{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.social-link{font-size:11px;color:#c4d3c8;border:1px solid #2a3b30;padding:9px 11px;border-radius:8px;background:#ffffff03}.social-link.disabled{opacity:.55;cursor:not-allowed}.notice{font-size:10px;color:#87968b;line-height:1.6;margin-top:12px}
+footer{border-top:1px solid #1e2821;padding:25px 0 32px;color:#77847b;font-size:10px}.foot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}.disclaimer{max-width:850px;line-height:1.7;margin-top:14px;color:#657168}.reveal{opacity:1;transform:none;transition:opacity .25s ease,transform .25s ease}.reveal.visible{opacity:1;transform:none}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes spin2{to{transform:rotate(325deg)}}@keyframes float{0%,100%{translate:0 0}50%{translate:0 -9px}}@keyframes pulse{0%,100%{opacity:.35;transform:scale(1)}50%{opacity:.8;transform:scale(1.04)}}
+@media(max-width:800px){.navlinks{display:none}.hero{grid-template-columns:1fr;padding:58px 0 30px;gap:0}.hero-art{height:300px;max-width:480px;width:100%;margin:0 auto}.orbital.two{width:300px;height:170px}.orbital{width:235px;height:235px}.orbital.three{height:290px;width:180px}.core{width:140px;height:140px}.card-a{right:0;top:18px}.card-b{left:0;bottom:25px}.card-c{right:0;bottom:0}.grid3{grid-template-columns:1fr}.process{grid-template-columns:1fr;gap:25px}.market-grid{grid-template-columns:1fr}.market{display:grid;grid-template-columns:1fr auto;align-items:center}.market .price{margin:0}.market .change{grid-column:2}.market small{grid-column:1/-1}.demo-lower{grid-template-columns:1fr}.roadmap-grid{grid-template-columns:repeat(2,1fr)}.tokenbox{grid-template-columns:1fr;padding:23px}.section{padding:58px 0}.tickerline{justify-content:flex-start}.tickerline span{width:calc(50% - 10px)}}
+@media(max-width:420px){.wrap{width:min(100% - 28px,1120px)}.roadmap-grid{grid-template-columns:1fr}.hero-art{transform:scale(.93);margin-top:-5px;margin-bottom:-10px}.status{font-size:8px}.navright .btn{padding:9px;font-size:10px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<nav class="wrap">
+  <a class="brand" href="#top" aria-label="TiVo home"><span class="mark">T</span><span>TiVo<span style="color:var(--mint)">.</span></span></a>
+  <div class="navlinks"><a href="#demo">Papertrade demo</a><a href="#how">How it works</a><a href="#roadmap">Roadmap</a><a href="#community">Community</a></div>
+  <div class="navright"><span class="status"><i class="dot"></i> EARLY ACCESS</span><a class="btn ghost small" href="#demo">Explore TiVo ↗</a></div>
+</nav>
+<main id="top">
+<section class="hero wrap">
+  <div>
+    <div class="eyebrow"><span>✳</span> Autonomous intelligence for markets</div>
+    <h1>Your autonomous<br><em>AI trading agent.</em></h1>
+    <p class="lead">TiVo trades out loud on papertrade. Follow the concept, explore sample decisions, and see how transparent trading could work — before any live trading engine is connected.</p>
+    <div class="actions"><a class="btn primary" href="#demo">Explore the demo ↗</a><a class="btn ghost" href="#how">How TiVo works ↓</a></div>
+    <p class="fine">Inference by Orbio · Decisions by Levanto · Launched on PONs</p>
+  </div>
+  <div class="hero-art" aria-label="Animated abstract TiVo AI orb">
+    <div class="orbital"></div><div class="orbital two"></div><div class="orbital three"></div>
+    <div class="core"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M18 28h64M18 50h64M18 72h64" stroke="#a9ffd5" stroke-width="3" stroke-linecap="round" opacity=".35"/><circle cx="35" cy="28" r="7" fill="#a9ffd5"/><circle cx="65" cy="50" r="7" fill="#d5ff72"/><circle cx="45" cy="72" r="7" fill="#a9ffd5"/><path d="M35 35v8m30 0v-8M45 65v-8" stroke="#a9ffd5" stroke-width="2"/></svg></div>
+    <div class="float-card card-a"><small>AGENT STATUS</small><strong class="green">◉ Concept preview</strong></div>
+    <div class="float-card card-b"><small>DECISION STYLE</small><strong>Observe → Explain → Simulate</strong></div>
+    <div class="float-card card-c"><small>EXECUTION</small><strong>Papertrade demo</strong></div>
+  </div>
+</section>
+<div class="wrap tickerline"><span>✳ <b>Readable decisions</b></span><span>↗ <b>Simulated execution</b></span><span>◌ <b>Visible trade history</b></span><span>⌁ <b>Papertrade first</b></span></div>
+
+<section class="section wrap" id="demo">
+  <div class="section-head reveal"><div class="kicker">01 / Interactive preview</div><h2>Trading, out loud.</h2><p class="sub">Explore TiVo’s decision preview and place simulated buy/sell orders with virtual funds. Prices are illustrative, not live, and no real trades are placed.</p></div>
+  <div class="demo-shell reveal">
+    <div class="demo-top"><div class="demo-title">TiVo / Papertrade terminal</div><span class="demo-label">SIMULATION · NOT LIVE DATA</span></div>
+    <div class="demo-content">
+      <div class="market-grid" role="group" aria-label="Choose sample market">
+        <button class="market active" data-market="ETH"><span class="symbol">ETH / USD</span><span class="price">$3,842.10</span><span class="change">+1.42% sample</span><small>Ethereum · illustrative quote</small></button>
+        <button class="market" data-market="BTC"><span class="symbol">BTC / USD</span><span class="price">$67,240.00</span><span class="change">+0.68% sample</span><small>Bitcoin · illustrative quote</small></button>
+        <button class="market" data-market="SOL"><span class="symbol">SOL / USD</span><span class="price">$154.80</span><span class="change down">−0.31% sample</span><small>Solana · illustrative quote</small></button>
+      </div>
+      <div class="demo-lower">
+        <div class="panel">
+          <div class="panel-title">Sample decision <span id="market-label">ETH / USD</span></div>
+          <div class="tabs" role="tablist" aria-label="Sample strategy">
+            <button class="tab active" data-strategy="observe">Observe</button><button class="tab" data-strategy="trend">Trend check</button><button class="tab" data-strategy="risk">Risk check</button>
+          </div>
+          <div class="signal"><div class="signal-icon" id="signal-icon">◉</div><div><b id="signal-title">Wait for confirmation</b><p id="signal-copy">Demo mode: TiVo would wait for its configured conditions before proposing a simulated trade.</p></div></div>
+          <div class="signal"><div class="signal-icon">⌁</div><div><b>Execution mode</b><p>Paper only — no wallet connection, no order placement, no real funds.</p></div></div>
+          <button class="btn primary small" id="simulate-btn" type="button">Run sample analysis ↻</button>
+        </div>
+        <div class="panel">
+          <div class="panel-title">Decision stream <span>LOCAL DEMO</span></div>
+          <div class="log" id="log" aria-live="polite">
+            <div><span class="mint">[DEMO]</span> TiVo preview initialized.</div>
+            <div><span class="mint">[MARKET]</span> ETH / USD sample selected.</div>
+            <div><span class="yellow">[RISK]</span> Awaiting strategy configuration.</div>
+            <div><span class="mint">[MODE]</span> Papertrade only.</div>
+          </div>
+          <p class="demo-note">Every entry here is generated locally in your browser to demonstrate the interface. It is not a real agent's reasoning or a performance record.</p>
+        </div>
+      </div>
+      <div class="paper-terminal panel">
+        <div class="panel-title">Practice trading <span>VIRTUAL FUNDS ONLY</span></div>
+        <p class="trade-intro">Place simulated market orders using illustrative prices. Your starting balance is $10,000 in virtual USD. No real funds, wallet, exchange, or live prices are connected.</p>
+        <div class="paper-stats">
+          <div><small>Available cash</small><strong id="cash-balance">$10,000.00</strong></div>
+          <div><small>Portfolio value</small><strong id="portfolio-value">$10,000.00</strong></div>
+          <div><small>Unrealized P&amp;L</small><strong id="paper-pnl">$0.00</strong></div>
+        </div>
+        <div class="trade-controls">
+          <label for="trade-quantity">Quantity (<span id="trade-symbol">ETH</span>)</label>
+          <input id="trade-quantity" type="number" min="0.0001" step="0.0001" value="0.1" inputmode="decimal">
+          <button class="btn primary small" id="paper-buy" type="button">Buy <span id="buy-symbol">ETH</span></button>
+          <button class="btn ghost small" id="paper-sell" type="button">Sell <span id="sell-symbol">ETH</span></button>
+          <button class="btn ghost small" id="paper-reset" type="button">Reset account</button>
+        </div>
+        <p class="trade-message" id="trade-message" role="status" aria-live="polite">Choose a market above, then place a simulated order.</p>
+        <div class="paper-columns">
+          <div><div class="panel-title">Your positions <span>SIMULATED</span></div><div id="paper-positions" class="paper-table"><p class="empty-state">No open positions yet.</p></div></div>
+          <div><div class="panel-title">Order history <span id="order-count">0 orders</span></div><div id="paper-orders" class="paper-table"><p class="empty-state">Your simulated orders will appear here.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap" id="how">
+  <div class="process">
+    <div class="section-head reveal"><div class="kicker">02 / The system</div><h2>Three layers.<br><span style="color:var(--mint)">One clear process.</span></h2><p class="sub">The project architecture as described. Tap each layer to learn what it is intended to do. These integrations are not connected in this website prototype.</p></div>
+    <div class="steps">
+      <div class="step reveal"><div class="num">01</div><div><h3>Inference by Orbio</h3><p>The intended intelligence layer.</p><button type="button" data-expand="orbio">Explore layer +</button><div class="step-detail" id="orbio">Orbio is described as the inference provider. In a future integration, this layer would interpret available inputs and return analysis for the decision system. Connection status: not connected.</div></div></div>
+      <div class="step reveal"><div class="num">02</div><div><h3>Decisions by Levanto</h3><p>The intended strategy and decision layer.</p><button type="button" data-expand="levanto">Explore layer +</button><div class="step-detail" id="levanto">Levanto is described as the decision layer. A production version would need defined strategy rules, validation, and risk controls. Connection status: not connected.</div></div></div>
+      <div class="step reveal"><div class="num">03</div><div><h3>Launched on PONs</h3><p>Deployment and ecosystem details.</p><button type="button" data-expand="pons">Explore layer +</button><div class="step-detail" id="pons">PONs is listed as the intended launch ecosystem. The precise technical role and official links can be added after you confirm the project details.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap" id="roadmap">
+  <div class="section-head reveal"><div class="kicker">03 / Roadmap</div><h2>From agent research to $TiVo.</h2><p class="sub">The project roadmap focuses on TiVo’s trading agent, transparent testing, community access, and token launch.</p></div>
+  <div class="roadmap-grid">
+    <article class="roadmap-card reveal"><span class="phase">Phase 01</span><h3>Agent strategy</h3><p>Define TiVo’s strategy, decision rules, risk limits, and how the agent explains its choices.</p><span class="state current">In development</span></article>
+    <article class="roadmap-card reveal"><span class="phase">Phase 02</span><h3>Transparent paper trading</h3><p>Validate strategies in simulation, record decisions, and share performance with clear risk context.</p><span class="state">Planned</span></article>
+    <article class="roadmap-card reveal"><span class="phase">Phase 03</span><h3>Community beta</h3><p>Invite early users to follow the agent, review its decisions, and provide feedback before wider access.</p><span class="state">Planned</span></article>
+    <article class="roadmap-card reveal"><span class="phase">Phase 04</span><h3>$TiVo token launch</h3><p>Publish verified contract details and official token information when the launch is confirmed.</p><span class="state">Not launched</span></article>
+  </div>
+</section>
+
+<section class="section wrap" id="community">
+  <div class="tokenbox reveal">
+    <div><span class="token-pill">$TiVo · PRE-LAUNCH</span><h2>Follow the build.</h2><p>Follow TiVo’s progress and official announcements. Token launch details and the purchase link will be published only after they are confirmed.</p>
+      <div class="token-meta"><span>Network plan: Ethereum</span><span>Contract: Pending launch</span><span>Trading: Not live</span></div>
+      <div class="socials"><a class="social-link" href="https://x.com/tivoklin?s=11" target="_blank" rel="noopener noreferrer">Follow on X ↗</a><span class="social-link disabled">Community · coming soon</span><span class="social-link disabled">Buy $TiVo · not live</span></div>
+      <div class="notice">Official updates are shared on TiVo’s X account. The token purchase link will be added only after the contract and official venue are verified. Never share seed phrases or private keys.</div>
+    </div>
+    <div><span class="eyebrow"><span>✳</span> EARLY STAGE</span></div>
+  </div>
+</section>
+</main>
+<footer><div class="wrap"><div class="foot"><a class="brand" href="#top"><span class="mark">T</span><span>TiVo<span style="color:var(--mint)">.</span></span></a><span>Autonomous intelligence. Transparent by design.</span><span>© 2026 TiVo</span></div><p class="disclaimer">This is an early front-end prototype. The AI trading engine, Orbio/Levanto integrations, live market feeds, wallet connection, token contract, and purchase flow are not connected. Market values and decision examples in the demo are illustrative, not live prices or financial advice. No profits are promised or guaranteed. Crypto trading involves substantial risk.</p></div></footer>
+<script>
+const marketData={
+ ETH:{label:'ETH / USD',title:'Wait for confirmation',copy:'Demo mode: TiVo would wait for its configured conditions before proposing a simulated trade.',icon:'◉',trend:'Sample trend is positive, but a real strategy would need verified data and rules.',risk:'Risk checks would be required before any simulated order could be proposed.'},
+ BTC:{label:'BTC / USD',title:'Monitor momentum',copy:'Illustrative BTC setup selected. No real market feed or strategy is connected.',icon:'↗',trend:'Sample BTC momentum is mildly positive. This is placeholder data, not a live signal.',risk:'A real system would check volatility, exposure limits, and invalidation conditions.'},
+ SOL:{label:'SOL / USD',title:'Watch for volatility',copy:'Illustrative SOL setup selected. No real market feed or strategy is connected.',icon:'⌁',trend:'Sample SOL change is slightly negative. The demo makes no prediction about future price.',risk:'A production risk layer would check volatility and maximum allowed loss before acting.'}
+};
+let selectedMarket='ETH',selectedStrategy='observe';
+const $=id=>document.getElementById(id);
+function updateDecision(run=false){
+ const d=marketData[selectedMarket];$('market-label').textContent=d.label;
+ let title=d.title,copy=d.copy,icon=d.icon;
+ if(selectedStrategy==='trend'){title='Trend check · demo';copy=d.trend;icon='↗'}
+ if(selectedStrategy==='risk'){title='Risk check · demo';copy=d.risk;icon='⌁'}
+ $('signal-title').textContent=title;$('signal-copy').textContent=copy;$('signal-icon').textContent=icon;
+ if(run){
+  const time=new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  const line=document.createElement('div');
+  line.innerHTML='<span class="mint">['+time+']</span> '+selectedMarket+' · '+(selectedStrategy==='observe'?'observe':selectedStrategy==='trend'?'trend check':'risk check')+' <span class="yellow">· simulated</span>';
+  $('log').prepend(line);
+  while($('log').children.length>7)$('log').lastElementChild.remove();
+ }
+}
+document.querySelectorAll('[data-market]').forEach(btn=>btn.addEventListener('click',()=>{selectedMarket=btn.dataset.market;document.querySelectorAll('[data-market]').forEach(b=>b.classList.toggle('active',b===btn));updateDecision();renderPaper()}));
+document.querySelectorAll('[data-strategy]').forEach(btn=>btn.addEventListener('click',()=>{selectedStrategy=btn.dataset.strategy;document.querySelectorAll('[data-strategy]').forEach(b=>b.classList.toggle('active',b===btn));updateDecision()}));
+$('simulate-btn').addEventListener('click',()=>updateDecision(true));
+renderPaper();
+document.querySelectorAll('[data-expand]').forEach(btn=>btn.addEventListener('click',()=>{const panel=$(btn.dataset.expand);const open=panel.classList.toggle('open');btn.textContent=open?'Close details −':'Explore layer +'}));
+// Browser-only paper trading: illustrative fixed prices, virtual USD, no exchange connection.
+const paperPrices={ETH:3842.10,BTC:67240.00,SOL:154.80};
+let paperCash=10000;
+let paperHoldings={ETH:{qty:0,cost:0},BTC:{qty:0,cost:0},SOL:{qty:0,cost:0}};
+let paperOrders=[];
+function money(n){return n.toLocaleString('en-US',{style:'currency',currency:'USD',minimumFractionDigits:2,maximumFractionDigits:2})}
+function chosenPaperMarket(){return selectedMarket}
+function renderPaper(){
+ const held=Object.entries(paperHoldings).filter(([_,h])=>h.qty>0.00000001);
+ const marketValue=held.reduce((sum,[sym,h])=>sum+h.qty*paperPrices[sym],0);
+ const cost=held.reduce((sum,[_,h])=>sum+h.cost,0);
+ const pnl=marketValue-cost;
+ $('cash-balance').textContent=money(paperCash);$('portfolio-value').textContent=money(paperCash+marketValue);$('paper-pnl').textContent=money(pnl);$('paper-pnl').style.color=pnl>=0?'var(--green)':'var(--red)';
+ $('trade-symbol').textContent=selectedMarket;$('buy-symbol').textContent=selectedMarket;$('sell-symbol').textContent=selectedMarket;
+ $('paper-positions').innerHTML=held.length?held.map(([sym,h])=>{const value=h.qty*paperPrices[sym],upnl=value-h.cost;return `<div class="paper-row"><div><strong>${sym}</strong><small>${h.qty.toFixed(6)} units · avg cost ${money(h.cost/h.qty)}</small></div><div class="paper-value"><strong>${money(value)}</strong><small class="${upnl>=0?'positive':'negative'}">${upnl>=0?'+':''}${money(upnl)}</small></div></div>`}).join(''):'<p class="empty-state">No open positions yet. Buy a small amount with virtual funds to begin.</p>';
+ $('paper-orders').innerHTML=paperOrders.length?paperOrders.slice(0,8).map(o=>`<div class="paper-row"><div><strong>${o.side} ${o.symbol}</strong><small>${o.qty.toFixed(6)} @ ${money(o.price)} · ${o.time}</small></div><div class="paper-value"><small>${money(o.total)}</small></div></div>`).join(''):'<p class="empty-state">Your simulated orders will appear here.</p>';
+ $('order-count').textContent=`${paperOrders.length} order${paperOrders.length===1?'':'s'}`;
+}
+function placePaperOrder(side){
+ const sym=chosenPaperMarket(),price=paperPrices[sym],qty=Number($('trade-quantity').value),total=qty*price;
+ const msg=$('trade-message');msg.classList.remove('error');
+ if(!Number.isFinite(qty)||qty<=0){msg.textContent='Enter a quantity greater than zero.';msg.classList.add('error');return}
+ const holding=paperHoldings[sym];
+ if(side==='BUY'){
+  if(total>paperCash+1e-8){msg.textContent='Not enough virtual cash for this order. Reduce the quantity.';msg.classList.add('error');return}
+  paperCash-=total;holding.qty+=qty;holding.cost+=total;
+ }else{
+  if(qty>holding.qty+1e-8){msg.textContent=`You only hold ${holding.qty.toFixed(6)} ${sym} in this paper account.`;msg.classList.add('error');return}
+  const avg=holding.qty>0?holding.cost/holding.qty:0;paperCash+=total;holding.qty-=qty;holding.cost=Math.max(0,holding.cost-avg*qty);if(holding.qty<1e-8){holding.qty=0;holding.cost=0}
+ }
+ paperOrders.unshift({side,symbol:sym,qty,price,total,time:new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'})});
+ msg.textContent=`Simulated ${side.toLowerCase()} filled: ${qty} ${sym} at ${money(price)}. No real trade was placed.`;
+ const line=document.createElement('div');line.innerHTML=`<span class="mint">[PAPER]</span> ${side} ${qty} ${sym} @ ${money(price)} <span class="yellow">· simulated</span>`;$('log').prepend(line);while($('log').children.length>7)$('log').lastElementChild.remove();renderPaper();
+}
+$('paper-buy').addEventListener('click',()=>placePaperOrder('BUY'));
+$('paper-sell').addEventListener('click',()=>placePaperOrder('SELL'));
+$('paper-reset').addEventListener('click',()=>{paperCash=10000;paperHoldings={ETH:{qty:0,cost:0},BTC:{qty:0,cost:0},SOL:{qty:0,cost:0}};paperOrders=[];$('trade-message').classList.remove('error');$('trade-message').textContent='Paper account reset to $10,000 virtual cash.';renderPaper()});
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
